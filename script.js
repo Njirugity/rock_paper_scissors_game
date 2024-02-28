@@ -7,6 +7,7 @@ const result = document.querySelector('.result');
 const rock = document.getElementById('rockIcon');
 const paper = document.getElementById('paperIcon');
 const scissors = document.getElementById('scissorsIcon');
+const winPara = document.getElementById('winPara');
 
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"]
@@ -25,17 +26,18 @@ function game(userChoice) {
     ) {
         userSCore++;
         userSCoreSpan.textContent = userSCore
-        const winPara = document.createElement('p')
-        winPara.textContent = `${userChoice} beats  ${computerChoice}`
-        result.appendChild(winPara)
+
+        winPara.textContent = `You win; ${userChoice} beats  ${computerChoice}`
+
 
 
     } else if (userChoice === computerChoice) {
         console.log(`Its a draw, You chose ${userChoice} and the computer chose ${computerChoice}`)
-
+        winPara.textContent = 'Its a tie'
     } else {
         computerScore++;
         computerScoreSpan.textContent = computerScore;
+        winPara.textContent = `You lose; ${computerChoice} beats  ${userChoice}`
     }
 }
 
@@ -53,3 +55,4 @@ function playGame() {
     })
 }
 playGame();
+
